@@ -1,0 +1,58 @@
+// Import library functions for theme creation.
+@import '~@angular/material/theming';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define your application's custom theme.
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+$danger: mat-palette($mat-red);
+
+// Include theme styles for Angular Material components.
+@include angular-material-theme($theme);
+
+
+.admin-main{
+  width: 100vw;
+  height: 100vh;
+}
+
+.example-toolbar{
+  position: relative;
+  height: 8.5%;
+  z-index: 2;
+}
+
+button:focus {
+  outline: none;
+  border: 0;
+}
+
+.example-container {
+  position: relative;
+  width: 100%;
+  height: 91.5%;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 5px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.list-item-active {
+  background: rgba(0, 0, 0, 0.05);
+  color: mat-color($primary, darker) !important;
+}
+

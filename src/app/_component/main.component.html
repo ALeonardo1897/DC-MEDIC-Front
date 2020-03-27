@@ -1,0 +1,73 @@
+<div class="admin-main">
+    <mat-toolbar color="primary" class="example-toolbar mat-elevation-z8">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-container" autosize>
+      <mat-sidenav #sidenav class="example-sidenav" mode="over">
+        <mat-nav-list>
+          <div *ngFor="let item of navItems">
+  
+            <div *ngIf="!item.children">
+              <mat-accordion>
+                <a mat-list-item routerLink="{{ item.path }}" routerLinkActive
+                  #routerLinkActiveInstance="routerLinkActive"
+                  [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+                  [class.list-item-active]="routerLinkActiveInstance.isActive"
+                  >
+                  <mat-icon>{{ item.icon }}</mat-icon>&nbsp;&nbsp;&nbsp;
+                  <div>{{ item.title }}</div>
+                </a>
+                <mat-divider></mat-divider>
+              </mat-accordion>
+            </div>
+  
+            <div *ngIf="item.children">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <!-- Cabeceras del submenu -->
+                      <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <mat-icon>{{item.icon}}</mat-icon>&nbsp;&nbsp;
+                        {{item.title}}
+                      </div>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div *ngFor="let child of item.children">
+                    <a mat-list-item routerLink="{{ child.path }}">
+                      <!-- Entradas de cada submenú  -->
+                      <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <mat-icon>{{child.icon}}</mat-icon>&nbsp;&nbsp;
+                        {{child.title}}
+                      </div>
+                    </a>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+  
+          </div>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class="example-sidenav-content">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
