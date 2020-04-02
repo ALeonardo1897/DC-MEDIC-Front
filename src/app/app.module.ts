@@ -10,13 +10,26 @@ import { LoginComponent } from './_component/auth/login/login.component';
 import { PacientesComponent } from './_component/pacientes/pacientes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
+import { PacientesCreateComponent } from './_component/pacientes/add/pacientes-create.component';
+
+
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+      tokenGetter: () => {return localStorage.getItem("ACCESS_TOKEN")},
+      whitelistedDomains: ["127.0.0.1:8000"]
+  }
+};
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LoginComponent,
-    PacientesComponent
+    PacientesComponent,
+    PacientesCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +37,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    JwtModule.forRoot(JWT_Module_Options)
   ],
   providers: [],
   bootstrap: [AppComponent]

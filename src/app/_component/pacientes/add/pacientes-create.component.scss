@@ -1,0 +1,22 @@
+.form{
+    min-width: 400px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width{
+    width: 100%;
+    padding: 3px;
+}
+
+::ng-deep {
+
+    .mat-dialog-actions{
+        padding-bottom: 15px;
+    }
+    
+    .snackbar-base{
+        color: white;
+    }
+
+}

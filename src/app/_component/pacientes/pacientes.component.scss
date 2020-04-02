@@ -1,0 +1,40 @@
+.main {
+    width: 90vw;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.danger{
+    color: #e53935;
+  }  
+
+::ng-deep {
+    .mat-table {
+        width: 100%;
+    }
+
+    .mat-sort-header-button:focus {
+        outline: none;
+    }
+
+    .mat-row:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .mat-fab {
+        position: absolute;
+        bottom: 5%;
+        right: 2%;
+    }
+
+    .mat-fab:focus {
+        outline: none;
+    }
+
+    .mat-button-base:focus {
+        outline: none;
+    }
+}

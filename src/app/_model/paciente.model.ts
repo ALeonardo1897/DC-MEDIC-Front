@@ -1,8 +1,9 @@
 export class Paciente{
+    id: number;
     nombres: string;
     apellidos: string;
     dni: string;
-    dirección: string;
+    direccion: string;
     telefono?: string;
     email: string;
 }

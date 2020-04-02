@@ -1,0 +1,73 @@
+<h2 *ngIf="paciente" mat-dialog-title>
+    Actualizar Paciente
+</h2>
+<h2 *ngIf="!paciente" mat-dialog-title>
+    Nuevo Paciente
+</h2>
+<mat-dialog-content>
+<form [formGroup]="pacienteForm" class="form" >
+    <mat-form-field class="full-width">
+        <mat-label>Nombres</mat-label>
+        <input matInput formControlName="nombres" placeholder="">
+        <mat-error *ngIf="pacienteForm.get('nombres').errors?.required">
+            Campo <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="pacienteForm.get('nombres').errors?.minlength">
+            Caracteres mínimos <strong>5</strong> 
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="apellidos" placeholder="">
+        <mat-error *ngIf="pacienteForm.get('apellidos').errors?.required">
+            Campo <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="pacienteForm.get('apellidos').errors?.minlength">
+            Caracteres mínimos <strong>5</strong> 
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dni" placeholder="">
+        <mat-error *ngIf="pacienteForm.get('dni').errors?.required">
+            Campo <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="pacienteForm.get('dni').errors?.pattern">
+            Dígitos <strong>8</strong> 
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="direccion" placeholder="">
+        <mat-error *ngIf="pacienteForm.get('direccion').errors?.required">
+            Campo <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="pacienteForm.get('direccion').errors?.minlength">
+            Caracteres mínimos <strong>5</strong> 
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="">
+        <mat-error *ngIf="pacienteForm.get('email').errors?.required">
+            Campo <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="pacienteForm.get('email').errors?.email">
+            Inserte un email <strong>válido</strong> 
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" placeholder="">
+        <mat-error *ngIf="pacienteForm.get('telefono').errors?.pattern">
+            Dígitos <strong>9</strong> 
+        </mat-error>
+    </mat-form-field>
+    
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close	>Close</button>
+    <button *ngIf="!paciente" mat-raised-button color="primary" [disabled]="pacienteForm.invalid" (click)="insert(pacienteForm.value)">Create</button>
+    <button *ngIf="paciente" mat-raised-button color="primary" [disabled]="pacienteForm.invalid" (click)="update(pacienteForm.value)">Update</button>
+</mat-dialog-actions>
