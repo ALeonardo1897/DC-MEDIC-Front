@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //BACKEND_IP: '192.168.99.100',
   BACKEND_IP: 'http://127.0.0.1:8000',
+  JWT_BACKEND_IP: '127.0.0.1:8000'
 };
 
 /*

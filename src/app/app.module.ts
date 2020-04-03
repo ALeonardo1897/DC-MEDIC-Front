@@ -13,12 +13,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
 import { PacientesCreateComponent } from './_component/pacientes/add/pacientes-create.component';
+import { environment } from 'src/environments/environment';
 
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
       tokenGetter: () => {return localStorage.getItem("ACCESS_TOKEN")},
-      whitelistedDomains: ["127.0.0.1:8000"]
+      whitelistedDomains: [ environment.JWT_BACKEND_IP ]
   }
 };
 

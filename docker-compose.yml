@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  front:
+    build: .
+    environment:
+        BACKEND_IP: 'http://127.0.0.1:8000'
+        JWT_BACKEND_IP: '127.0.0.1:8000'
